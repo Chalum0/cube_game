@@ -43,7 +43,7 @@ while playing:
 
 
     for i in points_to_display:
-        zcd = 5
+        zcd = 1
         if vspoints[i[0]][2]>=zcd and vspoints[i[1]][2]>=zcd:
             pygame.draw.line(screen, (255, 255, 0), (ps[i[0]][0], ps[i[0]][1]), (ps[i[1]][0], ps[i[1]][1]))
         else:
