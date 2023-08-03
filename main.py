@@ -35,23 +35,23 @@ playing = True
 while playing:
     screen.fill((0, 0, 0))
 
-    points = ((10, 10, 30), (10, -10, 30), (-10, -10, 30), (-10, 10, 30), (10, 10, 60), (10, -10, 60), (-10, -10, 60), (-10, 10, 60))
     view_matrix = game.view_matrix()
-    ps, vspoints = game.display_rect(points, view_matrix, screen_x, screen_y, screen)
+    for k in game.all_blocks:
+        ps, vspoints = game.display_rect(k.points, view_matrix, screen_x, screen_y, screen)
 
-    """    game.player.camY -= numpy.clip((pygame.mouse.get_rel()[0])/200, -0.2, .2)"""
 
-
-    for i in points_to_display:
-        zcd = 1
-        if vspoints[i[0]][2]>=zcd and vspoints[i[1]][2]>=zcd:
-            pygame.draw.line(screen, (255, 255, 0), (ps[i[0]][0], ps[i[0]][1]), (ps[i[1]][0], ps[i[1]][1]))
-        elif not (vspoints[i[0]][2]<=zcd and vspoints[i[1]][2]<=zcd):
-            clipped = clip3D(vspoints[i[0]], vspoints[i[1]])
-            if vspoints[i[0]][2] < zcd <= vspoints[i[1]][2]:
-                pygame.draw.line(screen, (255, 255, 0), (clipped[0], clipped[1]), (ps[i[1]][0], ps[i[1]][1]))
-            if vspoints[i[0]][2] >= zcd > vspoints[i[1]][2]:
-                pygame.draw.line(screen, (255, 255, 0), (ps[i[0]][0], ps[i[0]][1]), (clipped[0], clipped[1]))
+        for i in points_to_display:
+            zcd = 1
+            if vspoints[i[0]][2]>=zcd and vspoints[i[1]][2]>=zcd:
+                pygame.draw.line(screen, (255, 255, 0), (ps[i[0]][0], ps[i[0]][1]), (ps[i[1]][0], ps[i[1]][1]))
+            elif not (vspoints[i[0]][2]<=zcd and vspoints[i[1]][2]<=zcd):
+                clipped = clip3D(vspoints[i[0]], vspoints[i[1]])
+                if vspoints[i[0]][2] < zcd <= vspoints[i[1]][2]:
+                    pygame.draw.line(screen, (255, 255, 0), (clipped[0], clipped[1]), (ps[i[1]][0], ps[i[1]][1]))
+                if vspoints[i[0]][2] >= zcd > vspoints[i[1]][2]:
+                    pygame.draw.line(screen, (255, 255, 0), (ps[i[0]][0], ps[i[0]][1]), (clipped[0], clipped[1]))
+        for i in points_to_draw:
+            pygame.draw.polygon(screen, (255, 0, 255), [(ps[i[0]][0], ps[i[0]][1]), (ps[i[1]][0], ps[i[1]][1]), (ps[i[2]][0], ps[i[2]][1])])
 
 
     keys = pygame.key.get_pressed()

@@ -1,11 +1,15 @@
 import pygame
 import player
 import math
+import cube
 
 class Game:
     def __init__(self):
         self.player = player.Player()
+        self.all_blocks = []
 
+        self.all_blocks.append(cube.Block((0, 0, 45)))
+        self.all_blocks.append(cube.Block((20, 0, 45)))
     def display_rect(self, points: tuple, view_matrix: tuple, screen_x: int, screen_y: int, screen: pygame.surface.Surface):
         ps = []
         vspoints = []
