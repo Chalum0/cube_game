@@ -48,9 +48,9 @@ while playing:
             pygame.draw.line(screen, (255, 255, 0), (ps[i[0]][0], ps[i[0]][1]), (ps[i[1]][0], ps[i[1]][1]))
         else:
             clipped = clip3D(vspoints[i[0]], vspoints[i[1]])
-            if vspoints[i[0]][2] < zcd < vspoints[i[1]][2]:
+            if vspoints[i[0]][2] < zcd <= vspoints[i[1]][2]:
                 pygame.draw.line(screen, (255, 255, 0), (clipped[0], clipped[1]), (ps[i[1]][0], ps[i[1]][1]))
-            if vspoints[i[0]][2] > zcd > vspoints[i[1]][2]:
+            if vspoints[i[0]][2] >= zcd > vspoints[i[1]][2]:
                 pygame.draw.line(screen, (255, 255, 0), (ps[i[0]][0], ps[i[0]][1]), (clipped[0], clipped[1]))
 
 
