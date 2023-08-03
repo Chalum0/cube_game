@@ -4,7 +4,6 @@ import numpy
 import time
 import game
 import math
-import player
 
 
 pygame.init()
@@ -29,7 +28,7 @@ def calculate_new_xy(old_xy, speed, angle_in_radians):
 def clip3D(p1, p2):
 
     step = ((zcd-p1[2])/(p2[2]-p1[2]))
-    return ((p1[0] + (p2[0]-p1[0])*step) * fov / zcd, p1[1] + (p2[1]-p1[1])*step * fov / zcd)
+    return ((p1[0] + (p2[0]-p1[0])*step) * game.player.fov / zcd, p1[1] + (p2[1]-p1[1])*step * game.player.fov / zcd)
 
 
 playing = True
