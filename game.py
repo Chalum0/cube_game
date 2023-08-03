@@ -9,7 +9,7 @@ class Game:
         self.all_blocks = []
 
         self.all_blocks.append(cube.Block((0, 0, 45), self.player.pos))
-        self.all_blocks.append(cube.Block((20, 0, 45), self.player.pos))
+        # self.all_blocks.append(cube.Block((20, 0, 45), self.player.pos))
     def display_rect(self, points: tuple, view_matrix: tuple, screen_x: int, screen_y: int, screen: pygame.surface.Surface):
         ps = []
         vspoints = []

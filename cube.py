@@ -14,30 +14,20 @@ class Block:
                        (coord[0] - block_size, coord[1] - block_size, coord[2] + block_size),
                        (coord[0] - block_size, coord[1] + block_size, coord[2] + block_size))
         self.coord = coord
-        self.top = False
-        self.bottom = False
-        self.left = False
-        self.right = False
-        self.back = False
-        self.front = False
+        self.faces = []
         self.update_render(player_coords)
 
     def update_render(self, player_pos):
-        self.top = False
-        self.bottom = False
-        self.left = False
-        self.right = False
-        self.back = False
-        self.front = False
-        if player_pos[2] < self.coord[2]:
-            self.front = True
-        if player_pos[2] > self.coord[2]:
-            self.back = True
-        if player_pos[0] < self.coord[0]:
-            self.left = True
-        if player_pos[0] > self.coord[0]:
-            self.right = True
-        if player_pos[1] < self.coord[1]:
-            self.top = True
-        if player_pos[1] > self.coord[1]:
-            self.bottom = True
+        self.faces = []
+        if player_pos[2] < self.coord[2]-block_size:
+            self.faces.append((1, 2, 3, 0))  # front
+        if player_pos[2] > self.coord[2]+block_size:
+            self.faces.append((7, 6, 5, 4))  # back
+        if player_pos[0] < self.coord[0]-block_size:
+            self.faces.append((7, 6, 2, 3))  # left
+        if player_pos[0] > self.coord[0]+block_size:
+            self.faces.append((1, 5, 4, 0))  # right
+        if player_pos[1] < self.coord[1]-block_size:
+            self.faces.append((1, 2, 6, 5))  # top
+        if player_pos[1] > self.coord[1]+block_size:
+            self.faces.append((7, 4, 0, 3))  # bottom
