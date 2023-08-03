@@ -4,6 +4,7 @@ import numpy
 import time
 import game
 import math
+import player
 
 
 pygame.init()
