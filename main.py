@@ -37,7 +37,7 @@ while playing:
 
     points = ((10, 10, 30), (10, -10, 30), (-10, -10, 30), (-10, 10, 30), (10, 10, 60), (10, -10, 60), (-10, -10, 60), (-10, 10, 60))
     view_matrix = game.view_matrix()
-    ps = game.display_rect(points, view_matrix, screen_x, screen_y, screen)
+    ps, vspoints = game.display_rect(points, view_matrix, screen_x, screen_y, screen)
 
     """    game.player.camY -= numpy.clip((pygame.mouse.get_rel()[0])/200, -0.2, .2)"""
 
