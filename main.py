@@ -28,7 +28,7 @@ def calculate_new_xy(old_xy, speed, angle_in_radians):
 def clip3D(p1, p2, zcd_):
 
     step = ((zcd_-p1[2])/(p2[2]-p1[2]))
-    return (p1[0] + (p2[0]-p1[0])*step, p1[1] + (p2[1]-p1[1])*step, zcd_)
+    return ((p1[0] + (p2[0]-p1[0])*step), p1[1] + (p2[1]-p1[1])*step, zcd_)
 
 
 playing = True
@@ -47,10 +47,10 @@ while playing:
         if ps[i[0]][2]>zcd and ps[i[1]][2]>zcd:
             pygame.draw.line(screen, (255, 255, 0), (ps[i[0]][0], ps[i[0]][1]), (ps[i[1]][0], ps[i[1]][1]))
         else:
-            clipped = clip3D(ps[i[0]], ps[i[1]], zcd)
-            if ps[i[0]][2] < zcd < ps[i[1]][2]:
+            clipped = clip3D(points[i[0]], points[i[1]], zcd)
+            if points[i[0]][2] < zcd < points[i[1]][2]:
                 pygame.draw.line(screen, (255, 255, 0), (clipped[0], clipped[1]), (ps[i[1]][0], ps[i[1]][1]))
-            if ps[i[0]][2] > zcd > ps[i[1]][2]:
+            if points[i[0]][2] > zcd > points[i[1]][2]:
                 pygame.draw.line(screen, (255, 255, 0), (ps[i[0]][0], ps[i[0]][1]), (clipped[0], clipped[1]))
 
 
