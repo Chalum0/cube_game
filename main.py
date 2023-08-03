@@ -3,6 +3,7 @@ import pygame
 import random
 import time
 import game
+import math
 
 pygame.init()
 pygame.font.init()
@@ -11,6 +12,8 @@ screen = pygame.display.set_mode((1080, 720))
 clock = pygame.time.Clock()
 max_fps = 60
 screen_x, screen_y = screen.get_size()
+
+game = game.Game()
 
 playing = True
 while playing:
