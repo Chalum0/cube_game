@@ -1,5 +1,6 @@
 from setting import *
 import pygame
+import random
 import numpy
 import time
 import game
@@ -50,8 +51,21 @@ while playing:
                     pygame.draw.line(screen, (255, 255, 0), (clipped[0], clipped[1]), (ps[i[1]][0], ps[i[1]][1]))
                 if vspoints[i[0]][2] >= zcd > vspoints[i[1]][2]:
                     pygame.draw.line(screen, (255, 255, 0), (ps[i[0]][0], ps[i[0]][1]), (clipped[0], clipped[1]))
-        for i in points_to_draw:
-            pygame.draw.polygon(screen, (255, 0, 255), [(ps[i[0]][0], ps[i[0]][1]), (ps[i[1]][0], ps[i[1]][1]), (ps[i[2]][0], ps[i[2]][1])])
+        k.update_render(game.player.pos)
+        if k.front:
+            pygame.draw.polygon(screen, colors[0], [(ps[front_face[0]][0], ps[front_face[0]][1]), (ps[front_face[1]][0], ps[front_face[1]][1]), (ps[front_face[2]][0], ps[front_face[2]][1]), (ps[front_face[3]][0], ps[front_face[3]][1])])
+        if k.back:
+            pygame.draw.polygon(screen, colors[1], [(ps[back_face[0]][0], ps[back_face[0]][1]), (ps[back_face[1]][0], ps[back_face[1]][1]), (ps[back_face[2]][0], ps[back_face[2]][1]), (ps[back_face[3]][0], ps[back_face[3]][1])])
+        if k.left:
+            pygame.draw.polygon(screen, colors[2], [(ps[left_face[0]][0], ps[left_face[0]][1]), (ps[left_face[1]][0], ps[left_face[1]][1]), (ps[left_face[2]][0], ps[left_face[2]][1]), (ps[left_face[3]][0], ps[left_face[3]][1])])
+        if k.right:
+            pygame.draw.polygon(screen, colors[3], [(ps[right_face[0]][0], ps[right_face[0]][1]), (ps[right_face[1]][0], ps[right_face[1]][1]), (ps[right_face[2]][0], ps[right_face[2]][1]), (ps[right_face[3]][0], ps[right_face[3]][1])])
+        if k.bottom:
+            pygame.draw.polygon(screen, colors[4], [(ps[bottom_face[0]][0], ps[bottom_face[0]][1]), (ps[bottom_face[1]][0], ps[bottom_face[1]][1]), (ps[bottom_face[2]][0], ps[bottom_face[2]][1]), (ps[bottom_face[3]][0], ps[bottom_face[3]][1])])
+        if k.top:
+            pygame.draw.polygon(screen, colors[5], [(ps[top_face[0]][0], ps[top_face[0]][1]), (ps[top_face[1]][0], ps[top_face[1]][1]), (ps[top_face[2]][0], ps[top_face[2]][1]), (ps[top_face[3]][0], ps[top_face[3]][1])])
+    
+
 
 
     keys = pygame.key.get_pressed()
