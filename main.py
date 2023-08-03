@@ -44,13 +44,13 @@ while playing:
 
     for i in points_to_display:
         zcd = 5
-        if ps[i[0]][1]>zcd and ps[i[1]][1]>zcd:
+        if ps[i[0]][2]>zcd and ps[i[1]][2]>zcd:
             pygame.draw.line(screen, (255, 255, 0), (ps[i[0]][0], ps[i[0]][1]), (ps[i[1]][0], ps[i[1]][1]))
         else:
             clipped = clip3D(ps[i[0]], ps[i[1]], zcd)
-            if ps[i[0]][1] < zcd < ps[i[1]][1]:
+            if ps[i[0]][2] < zcd < ps[i[1]][2]:
                 pygame.draw.line(screen, (255, 255, 0), (clipped[0], clipped[1]), (ps[i[1]][0], ps[i[1]][1]))
-            if ps[i[0]][1] > zcd > ps[i[1]][1]:
+            if ps[i[0]][2] > zcd > ps[i[1]][2]:
                 pygame.draw.line(screen, (255, 255, 0), (ps[i[0]][0], ps[i[0]][1]), (clipped[0], clipped[1]))
 
 
