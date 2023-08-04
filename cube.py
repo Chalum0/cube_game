@@ -32,9 +32,10 @@ class Block:
     def update_distance(self, player_pos):
         self.player_distance = math.dist(self.coord, player_pos)
 
-    def update_render(self, player_pos, map_, vm=0, camX=0, camY=0):
+    def update_render(self, player_pos, map_, vm, camX, camY):
         self.faces = []
-        if not(self.player_distance < -self.sphere_size or self.type == 0):
+        point = (self.coord[0]-player_pos[0], self.coord[1]-player_pos[1], self.coord[2]-player_pos[2])            
+        if not(point[1] * math.sin(camX) + point[2] * vm[2] - point[0] * vm[3] < -self.sphere_size or self.type == 0):
             if player_pos[2] < self.coord[2]-half_block:
                 if not self.matrix_coords[0] == 0:
                     if map_[self.matrix_coords[0] - 1][self.matrix_coords[1]] != 1:
