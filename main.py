@@ -56,6 +56,7 @@ while playing:
                         lst.append(clip3D(points[(x+1)%len(points2)], points[x]))
                 if len(lst)>=3:
                     pygame.draw.polygon(screen, k.color, lst)'''
+                pass
             else:
                 pygame.draw.polygon(screen, k.color, points2)
 
