@@ -38,7 +38,7 @@ class Block:
     def __lt__(self, other):
         return self.player_distance < other.player_distance
 
-    def update_distance(self, player_pos, map_, vm):
+    def update_distance(self, player_pos, vm):
         self.player_distance = math.dist(self.coord, player_pos)
         boolean = False
         point = (self.coord[0]-player_pos[0], self.coord[1]-player_pos[1], self.coord[2]-player_pos[2])
