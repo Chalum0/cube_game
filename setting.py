@@ -4,12 +4,4 @@ player_speed = 1
 cam = 0.05
 block_size = 20
 half_block = block_size/2
-
-colors = [(255, 0, 0), (0, 255, 0), (0, 0, 255), (255, 0, 255), (255, 255, 0), (0, 255, 255)]
-
-face = {}
-
 zcd = 1
-
-for i in range(7):
-    face[i] = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
