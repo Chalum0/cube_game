@@ -1,14 +1,19 @@
+from setting import *
 import pygame
 import player
 import math
 import cube
+import numpy
 
 class Game:
     def __init__(self):
         self.player = player.Player()
         self.all_blocks = []
+        self.map = [[1 for i in range(20)] for k in range(20)]
+        self.map[0][1] = 0
+        print(numpy.array(self.map))
 
-        self.all_blocks.append(cube.Block((0, 0, 45), self.player.pos))
+        self.make_map_out_of_list(self.map)
         # self.all_blocks.append(cube.Block((20, 0, 45), self.player.pos))
     def display_rect(self, points: tuple, view_matrix: tuple, screen_x: int, screen_y: int, screen: pygame.surface.Surface):
         ps = []
@@ -33,3 +38,12 @@ class Game:
                 math.sin(self.player.camX)*math.cos(self.player.camY),
                 math.cos(self.player.camX)*math.cos(self.player.camY),
                 math.cos(self.player.camX)*math.sin(self.player.camY))
+
+    def make_map_out_of_list(self, list_of_voxels: list[list]):
+        for z in range(len(list_of_voxels)):
+            for x in range(len(list_of_voxels[z])):
+                if list_of_voxels[z][x] == 1:
+                    self.all_blocks.append(cube.Block((x * block_size, 0, z * block_size), self.player.pos, self.map, (z, x)))
+                else:
+                    print("a")
+        print(len(self.all_blocks))

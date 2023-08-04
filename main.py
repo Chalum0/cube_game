@@ -42,7 +42,7 @@ while playing:
         ps, vspoints = game.display_rect(k.points, view_matrix, screen_x, screen_y, screen)
 
 
-        for i in points_to_display:
+        """for i in points_to_display:
             if vspoints[i[0]][2]>=zcd and vspoints[i[1]][2]>=zcd:
                 pygame.draw.line(screen, (255, 255, 0), (ps[i[0]][0], ps[i[0]][1]), (ps[i[1]][0], ps[i[1]][1]))
             elif not (vspoints[i[0]][2]<=zcd and vspoints[i[1]][2]<=zcd):
@@ -50,14 +50,15 @@ while playing:
                 if vspoints[i[0]][2] < zcd <= vspoints[i[1]][2]:
                     pygame.draw.line(screen, (255, 255, 0), (clipped[0], clipped[1]), (ps[i[1]][0], ps[i[1]][1]))
                 if vspoints[i[0]][2] >= zcd > vspoints[i[1]][2]:
-                    pygame.draw.line(screen, (255, 255, 0), (ps[i[0]][0], ps[i[0]][1]), (clipped[0], clipped[1]))
-        k.update_render(game.player.pos)
+                    pygame.draw.line(screen, (255, 255, 0), (ps[i[0]][0], ps[i[0]][1]), (clipped[0], clipped[1]))"""
+        k.update_render(game.player.pos, game.map)
         faces_displayed += len(k.faces)
 
 
         for i in k.faces:
-            points = [(vspoints[i[0]][0], vspoints[i[0]][1], vspoints[i[0]][2]), (vspoints[i[1]][0], vspoints[i[1]][1], vspoints[i[1]][2]), (vspoints[i[2]][0], vspoints[i[2]][1], vspoints[i[2]][2]), (vspoints[i[3]][0], vspoints[i[3]][1], vspoints[i[3]][2])]
-            points2 = [(ps[i[0]][0], ps[i[0]][1]), (ps[i[1]][0], ps[i[1]][1]), (ps[i[2]][0], ps[i[2]][1]), (ps[i[3]][0], ps[i[3]][1])]
+            j = i[0]
+            points = [(vspoints[j[0]][0], vspoints[j[0]][1], vspoints[j[0]][2]), (vspoints[j[1]][0], vspoints[j[1]][1], vspoints[j[1]][2]), (vspoints[j[2]][0], vspoints[j[2]][1], vspoints[j[2]][2]), (vspoints[j[3]][0], vspoints[j[3]][1], vspoints[j[3]][2])]
+            points2 = [(ps[j[0]][0], ps[j[0]][1]), (ps[j[1]][0], ps[j[1]][1]), (ps[j[2]][0], ps[j[2]][1]), (ps[j[3]][0], ps[j[3]][1])]
             if ("ez", "ez") in points2:
                 lst = []
                 for x in range(len(points)):
@@ -67,9 +68,9 @@ while playing:
                         lst.append(clip3D(points[(x+1)%len(points2)], points[x]))
 
                 if len(lst) >= 3:
-                    pygame.draw.polygon(screen, colors[0], lst)
+                    pygame.draw.polygon(screen, k.color, lst)
             else:
-                pygame.draw.polygon(screen, colors[0], points2)
+                pygame.draw.polygon(screen, k.color, points2)
 
 
 
@@ -102,6 +103,7 @@ while playing:
 
     screen.blit(font.render(f"Coords: {round(game.player.pos[0], 1)}, {round(game.player.pos[1], 1)}, {round(game.player.pos[2], 1)}, CamX: {round(math.degrees(game.player.camX), 1)}, CamY: {round(math.degrees(game.player.camY), 1)}", True, (255, 255, 255)), (5, 5))
     screen.blit(font.render(f"Faces rendered: {faces_displayed}", True, (255, 255, 255)), (5, 25))
+    screen.blit(font.render(f"Fps: {round(clock.get_fps(), 1)}", True, (255, 255, 255)), (5, 45))
 
     pygame.display.flip()
     clock.tick(max_fps)
