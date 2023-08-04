@@ -37,32 +37,32 @@ class Block:
             if player_pos[2] < self.coord[2]-half_block:
                 if not self.matrix_coords[0] == 0:
                     if map_[self.matrix_coords[0] - 1][self.matrix_coords[1]] != 1:
-                        self.faces.append(((1, 2, 3, 0), math.dist((self.coord[0], self.coord[1], self.coord[2] - half_block), player_pos)))  # front
+                        self.faces.append((1, 2, 3, 0))  # front
                 else:
-                    self.faces.append(((1, 2, 3, 0), math.dist((self.coord[0], self.coord[1], self.coord[2] - half_block), player_pos)))  # front
+                    self.faces.append((1, 2, 3, 0))  # front
     
             if player_pos[2] > self.coord[2]+half_block:
                 if not self.matrix_coords[0] == len(map_)-1:
                     if map_[self.matrix_coords[0] + 1][self.matrix_coords[1]] != 1:
-                        self.faces.append(((7, 6, 5, 4), math.dist((self.coord[0], self.coord[1], self.coord[2] + half_block), player_pos)))  # back
+                        self.faces.append((7, 6, 5, 4))  # back
                 else:
-                    self.faces.append(((7, 6, 5, 4), math.dist((self.coord[0], self.coord[1], self.coord[2] + half_block), player_pos)))  # back
+                    self.faces.append((7, 6, 5, 4))  # back
     
             if player_pos[0] < self.coord[0]-half_block:
                 if not self.matrix_coords[1] == 0:
                     if map_[self.matrix_coords[0]][self.matrix_coords[1] - 1] != 1:
-                        self.faces.append(((7, 6, 2, 3), math.dist((self.coord[0] - half_block, self.coord[1], self.coord[2]), player_pos)))  # left
+                        self.faces.append((7, 6, 2, 3))  # left
                 else:
-                    self.faces.append(((7, 6, 2, 3), math.dist((self.coord[0] - half_block, self.coord[1], self.coord[2]), player_pos)))  # left
+                    self.faces.append((7, 6, 2, 3))  # left
     
             if player_pos[0] > self.coord[0]+half_block:
                 if not self.matrix_coords[1] == len(map_[self.matrix_coords[0]])-1:
                     if map_[self.matrix_coords[0]][self.matrix_coords[1] + 1] != 1:
-                        self.faces.append(((1, 5, 4, 0), math.dist((self.coord[0] + half_block, self.coord[1], self.coord[2]), player_pos)))  # right
+                        self.faces.append((1, 5, 4, 0))  # right
                 else:
-                    self.faces.append(((1, 5, 4, 0), math.dist((self.coord[0] + half_block, self.coord[1], self.coord[2]), player_pos)))  # right
+                    self.faces.append((1, 5, 4, 0))  # right
     
             if player_pos[1] < self.coord[1]-half_block:
-                self.faces.append(((1, 2, 6, 5), math.dist((self.coord[0], self.coord[1] - half_block, self.coord[2]), player_pos)))  # top
+                self.faces.append((1, 2, 6, 5))  # top
             if player_pos[1] > self.coord[1]+half_block:
-                self.faces.append(((7, 4, 0, 3), math.dist((self.coord[0], self.coord[1] + half_block, self.coord[2]), player_pos)))  # bottom
+                self.faces.append((7, 4, 0, 3))  # bottom
