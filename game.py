@@ -8,7 +8,7 @@ import numpy
 class Game:
     def __init__(self):
         self.player = player.Player()
-        self.vm = None
+        self.vm = self.view_matrix()
         self.all_blocks = []
         self.map = [[1 for i in range(20)] for k in range(20)]
         self.map[0][1] = 0
