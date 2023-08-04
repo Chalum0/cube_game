@@ -52,7 +52,7 @@ while playing:
                     pygame.draw.line(screen, (255, 255, 0), (clipped[0], clipped[1]), (ps[i[1]][0], ps[i[1]][1]))
                 if vspoints[i[0]][2] >= zcd > vspoints[i[1]][2]:
                     pygame.draw.line(screen, (255, 255, 0), (ps[i[0]][0], ps[i[0]][1]), (clipped[0], clipped[1]))"""
-        k.update_render(game.player.pos, game.map, game.player.view_matrix, game.player.camX, game.player.camY)
+        k.update_render(game.player.pos, game.map, view_matrix, game.player.camX, game.player.camY)
 
 
         k.update_render(game.player.pos, game.map)
