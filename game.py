@@ -11,6 +11,7 @@ class Game:
         self.all_blocks = []
         self.map = [[1 for i in range(20)] for k in range(20)]
         self.map[0][1] = 0
+        self.sphere_size = math.sqrt(((block_size/2)**2) * 3)
         print(numpy.array(self.map))
 
         self.make_map_out_of_list(self.map)
@@ -48,7 +49,12 @@ class Game:
         print(len(self.all_blocks))
 
     def update_cube_list(self):
+        all_displayed_blocks = []
         for block in self.all_blocks:
             block.update_distance(self.player.pos)
+            if block.player_distance < -self.sphere_size:
+                all_displayed_blocks.append(0)
+            else:
+                all_displayed_blocks.append(1)
         self.all_blocks = sorted(self.all_blocks)
         self.all_blocks.reverse()
