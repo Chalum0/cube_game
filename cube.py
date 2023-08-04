@@ -40,6 +40,8 @@ class Block:
 
     def update_distance(self, player_pos):
         self.player_distance = math.dist(self.coord, player_pos)
+        boolean = True
+        return boolean
 
     def update_render(self, player_pos, map_, vm):
         self.faces = []
