@@ -24,7 +24,7 @@ class Block:
         self.vm = vm
         self.camX = camX
         self.camY = camY
-        self.update_render(player_coords, map_)
+        self.update_render(player_coords, map_, vm, camX, camY)
 
     def __lt__(self, other):
         return self.player_distance < other.player_distance
@@ -32,7 +32,7 @@ class Block:
     def update_distance(self, player_pos):
         self.player_distance = math.dist(self.coord, player_pos)
 
-    def update_render(self, player_pos, map_):
+    def update_render(self, player_pos, map_, vm=0, camX=0, camY=0):
         self.faces = []
         if not(self.player_distance < -self.sphere_size or self.type == 0):
             if player_pos[2] < self.coord[2]-half_block:
