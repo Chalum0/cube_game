@@ -55,6 +55,7 @@ while playing:
                         lst.append(points2[x])
                     if (points2[(x+1)%len(points2)] == ("ez", "ez") and points2[x] != ("ez", "ez")) or (points2[(x+1)%len(points2)] != ("ez", "ez") and points2[x] == ("ez", "ez")):
                         lst.append(clip3D(points[(x+1)%len(points2)], points[x]))
+                if len(lst)>=3:
                     pygame.draw.polygon(screen, k.color, lst)
             else:
                 pygame.draw.polygon(screen, k.color, points2)
