@@ -6,8 +6,9 @@ import cube
 import numpy
 
 class Game:
-    def __init__(self):
+    def __init__(self, view_matrix):
         self.player = player.Player()
+        self.vm = view_matrix
         self.all_blocks = []
         self.map = [[1 for i in range(20)] for k in range(20)]
         self.map[0][1] = 0
@@ -40,7 +41,7 @@ class Game:
     def make_map_out_of_list(self, list_of_voxels: list[list]):
         for z in range(len(list_of_voxels)):
             for x in range(len(list_of_voxels[z])):
-                            self.all_blocks.append(cube.Block((x * block_size, 0, z * block_size), self.player.pos, self.map, (z, x), view_matrix, self.player.camX, self.player.camY))
+                            self.all_blocks.append(cube.Block((x * block_size, 0, z * block_size), self.player.pos, self.map, (z, x), self.vm, self.player.camX, self.player.camY))
 
     def update_cube_list(self):
         for block in self.all_blocks:
