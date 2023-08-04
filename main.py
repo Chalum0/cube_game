@@ -38,9 +38,9 @@ while playing:
 
     view_matrix = game.view_matrix()
     faces_displayed = 0
-    game.update_cube_list()
+    game.update_cube_list(view_matrix)
     for k in game.displayed_blocks:
-        k.update_render(game.player.pos, game.map, view_matrix)
+        k.update_render(game.player.pos, game.map)
         if len(k.faces) > 0:
             ps, vspoints = game.display_rect(k.points, view_matrix, screen_x, screen_y, screen)
             faces_displayed += len(k.faces)
