@@ -42,17 +42,14 @@ class Game:
     def make_map_out_of_list(self, list_of_voxels: list[list]):
         for z in range(len(list_of_voxels)):
             for x in range(len(list_of_voxels[z])):
-                if list_of_voxels[z][x] == 1:
-                    self.all_blocks.append(cube.Block((x * block_size, 0, z * block_size), self.player.pos, self.map, (z, x)))
-                else:
-                    print("a")
+                            self.all_blocks.append(cube.Block((x * block_size, 0, z * block_size), self.player.pos, self.map, (z, x)))
         print(len(self.all_blocks))
 
     def update_cube_list(self):
         all_displayed_blocks = []
         for block in self.all_blocks:
             block.update_distance(self.player.pos)
-            if block.player_distance < -self.sphere_size:
+            if block.player_distance < -self.sphere_size or block.type == 0:
                 all_displayed_blocks.append(0)
             else:
                 all_displayed_blocks.append(1)
