@@ -38,19 +38,20 @@ class Block:
     def __lt__(self, other):
         return self.player_distance < other.player_distance
 
-    def update_distance(self, player_pos):
+    def update_distance(self, player_pos, map_, vm):
         self.player_distance = math.dist(self.coord, player_pos)
-        boolean = True
-        return boolean
-
-    def update_render(self, player_pos, map_, vm):
-        self.faces = []
+        boolean = False
         point = (self.coord[0]-player_pos[0], self.coord[1]-player_pos[1], self.coord[2]-player_pos[2])
         transformed_point = (point[0] * vm[7] + point[2] * vm[6],
                 point[0] * vm[0] + point[1] * vm[5] - point[2] * vm[1],
                 point[1] * vm[4] + point[2] * vm[2] - point[0] * vm[3])
         if not(transformed_point[2] < -self.sphere_size or self.type == 0):
             if not (abs(transformed_point[0]) >transformed_point[2] * self.fx + self.fxd) or (abs(transformed_point[1]) >transformed_point[2] * self.fy + self.fyd):
+                boolean = True
+        return boolean
+
+    def update_render(self, player_pos, map_, vm):
+                self.faces = []
                 if player_pos[2] < self.coord[2]-half_block:
                     if not self.matrix_coords[0] == 0:
                         if map_[self.matrix_coords[0] - 1][self.matrix_coords[1]] != 1:
