@@ -60,11 +60,11 @@ while playing:
             points2 = [(ps[i[0]][0], ps[i[0]][1]), (ps[i[1]][0], ps[i[1]][1]), (ps[i[2]][0], ps[i[2]][1]), (ps[i[3]][0], ps[i[3]][1])]
             if ("ez", "ez") in points2:
                 lst = []
-                for x in range(len(points) - 1):
+                for x in range(len(points)):
                     if points2[x] != ("ez", "ez"):
                         lst.append(points2[x])
-                        if points2[x+1] == ("ez", "ez"):
-                            lst.append(clip3D(points[x+1], points[x]))
+                    if (points2[(x+1)%len(points2)] == ("ez", "ez") and points2[x] != ("ez", "ez")) or (points2[(x+1)%4] != ("ez", "ez") and points2[x] == ("ez", "ez")):
+                        lst.append(clip3D(points[(x+1)%len(points2)], points[x]))
 
                 if len(lst) >= 3:
                     pygame.draw.polygon(screen, colors[0], lst)
