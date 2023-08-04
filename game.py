@@ -29,7 +29,7 @@ class Game:
                 
                 ps.append((point[0] + screen_x/2, point[1] + screen_y/2))
             else:
-                ps.append(("ez", "ez"))
+                ps.append(False)
         return ps, vspoints
 
     def view_matrix(self):
