@@ -17,7 +17,7 @@ screen_x, screen_y = screen.get_size()
 pygame.mouse.set_visible(False)
 font = pygame.font.Font("assets/pixel.ttf", 25)
 
-game = game.Game()
+game = game.Game(screen)
 previous_mouse_pos = 0
 
 def calculate_new_xy(old_xy, speed, angle_in_radians):
@@ -40,25 +40,25 @@ while playing:
     faces_displayed = 0
     game.update_cube_list()
     for k in game.all_blocks:
-        ps, vspoints = game.display_rect(k.points, view_matrix, screen_x, screen_y, screen)
         k.update_render(game.player.pos, game.map, view_matrix)
-        faces_displayed += len(k.faces)
-        
-        for i in k.faces:
-            points = [(vspoints[i[0]]), (vspoints[i[1]]), (vspoints[i[2]]), (vspoints[i[3]])]
-            points2 = [(ps[i[0]]), (ps[i[1]]), (ps[i[2]]), (ps[i[3]])]
-            if False in points2:
-                lst = []
-                for x in range(len(points)):
-                    if points2[x] != False:
-                        lst.append(points2[x])
-                    if (points2[(x+1)%len(points2)] == False and points2[x] != False) or (points2[(x+1)%len(points2)] != False and points2[x] == False):
-                        lst.append(clip3D(points[(x+1)%len(points2)], points[x]))
-                if len(lst)>=3:
-                    pygame.draw.polygon(screen, k.color, lst)
-                pass
-            else:
-                pygame.draw.polygon(screen, k.color, points2)
+        if len(k.faces) > 0:
+            ps, vspoints = game.display_rect(k.points, view_matrix, screen_x, screen_y, screen)
+            faces_displayed += len(k.faces)
+            for i in k.faces:
+                points = [(vspoints[i[0]]), (vspoints[i[1]]), (vspoints[i[2]]), (vspoints[i[3]])]
+                points2 = [(ps[i[0]]), (ps[i[1]]), (ps[i[2]]), (ps[i[3]])]
+                if False in points2:
+                    lst = []
+                    for x in range(len(points)):
+                        if points2[x] != False:
+                            lst.append(points2[x])
+                        if (points2[(x+1)%len(points2)] == False and points2[x] != False) or (points2[(x+1)%len(points2)] != False and points2[x] == False):
+                            lst.append(clip3D(points[(x+1)%len(points2)], points[x]))
+                    if len(lst)>=3:
+                        pygame.draw.polygon(screen, k.color, lst)
+                    pass
+                else:
+                    pygame.draw.polygon(screen, k.color, points2)
 
 
 
