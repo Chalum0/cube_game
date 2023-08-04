@@ -47,7 +47,7 @@ while playing:
         for i in k.faces:
             j = i[0]
             points = [(vspoints[j[0]]), (vspoints[j[1]]), (vspoints[j[2]]), (vspoints[j[3]])]
-            points2 = [(ps[j[0]][0], ps[j[0]][1]), (ps[j[1]][0], ps[j[1]][1]), (ps[j[2]][0], ps[j[2]][1]), (ps[j[3]][0], ps[j[3]][1])]
+            points2 = [(ps[j[0]]), (ps[j[1]]), (ps[j[2]]), (ps[j[3]])]
             if ("ez", "ez") in points2:
                 lst = []
                 for x in range(len(points)):
