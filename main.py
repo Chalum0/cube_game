@@ -41,25 +41,12 @@ while playing:
     game.update_cube_list()
     for k in game.all_blocks:
         ps, vspoints = game.display_rect(k.points, view_matrix, screen_x, screen_y, screen)
-
-
-        """for i in points_to_display:
-            if vspoints[i[0]][2]>=zcd and vspoints[i[1]][2]>=zcd:
-                pygame.draw.line(screen, (255, 255, 0), (ps[i[0]][0], ps[i[0]][1]), (ps[i[1]][0], ps[i[1]][1]))
-            elif not (vspoints[i[0]][2]<=zcd and vspoints[i[1]][2]<=zcd):
-                clipped = clip3D(vspoints[i[0]], vspoints[i[1]])
-                if vspoints[i[0]][2] < zcd <= vspoints[i[1]][2]:
-                    pygame.draw.line(screen, (255, 255, 0), (clipped[0], clipped[1]), (ps[i[1]][0], ps[i[1]][1]))
-                if vspoints[i[0]][2] >= zcd > vspoints[i[1]][2]:
-                    pygame.draw.line(screen, (255, 255, 0), (ps[i[0]][0], ps[i[0]][1]), (clipped[0], clipped[1]))"""
         k.update_render(game.player.pos, game.map, view_matrix, game.player.camX, game.player.camY)
         faces_displayed += len(k.faces)
-
-
-
+        
         for i in k.faces:
             j = i[0]
-            points = [(vspoints[j[0]][0], vspoints[j[0]][1], vspoints[j[0]][2]), (vspoints[j[1]][0], vspoints[j[1]][1], vspoints[j[1]][2]), (vspoints[j[2]][0], vspoints[j[2]][1], vspoints[j[2]][2]), (vspoints[j[3]][0], vspoints[j[3]][1], vspoints[j[3]][2])]
+            points = [(vspoints[j[0]]), (vspoints[j[1]]), (vspoints[j[2]]), (vspoints[j[3]])]
             points2 = [(ps[j[0]][0], ps[j[0]][1]), (ps[j[1]][0], ps[j[1]][1]), (ps[j[2]][0], ps[j[2]][1]), (ps[j[3]][0], ps[j[3]][1])]
             if ("ez", "ez") in points2:
                 lst = []
