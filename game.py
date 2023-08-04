@@ -48,10 +48,10 @@ class Game:
             for x in range(len(list_of_voxels[z])):
                 self.all_blocks.append(cube.Block((x * block_size, 0, z * block_size), self.player.pos, self.map, (z, x), self.vm, self.screen, self.player.fov))
 
-    def update_cube_list(self):
+    def update_cube_list(self, vm):
         self.displayed_blocks = []
         for block in self.all_blocks:
-            boolean = block.update_distance(self.player.pos)
+            boolean = block.update_distance(self.player.pos, vm)
             if boolean:
                 self.displayed_blocks.append(block)
         self.displayed_blocks = sorted(self.displayed_blocks)
