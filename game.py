@@ -43,7 +43,6 @@ class Game:
         for z in range(len(list_of_voxels)):
             for x in range(len(list_of_voxels[z])):
                             self.all_blocks.append(cube.Block((x * block_size, 0, z * block_size), self.player.pos, self.map, (z, x)))
-        print(len(self.all_blocks))
 
     def update_cube_list(self):
         all_displayed_blocks = []
