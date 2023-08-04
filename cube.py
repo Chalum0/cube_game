@@ -32,7 +32,7 @@ class Block:
 
 
         # a laisser tout en bas connard
-        self.update_render(player_coords, map_, vm)
+        self.update_render(player_coords, map_)
 
 
     def __lt__(self, other):
@@ -50,7 +50,7 @@ class Block:
                 boolean = True
         return boolean
 
-    def update_render(self, player_pos, map_, vm):
+    def update_render(self, player_pos, map_):
                 self.faces = []
                 if player_pos[2] < self.coord[2]-half_block:
                     if not self.matrix_coords[0] == 0:
