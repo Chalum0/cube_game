@@ -25,8 +25,8 @@ class Block:
         screen_x, screen_y = screen.get_size()
         self.fx = screen_x/2 / fov
         self.fy = screen_y/2 / fov
-        self.fxd = math.sqrt(half_block**2 * 3+self.fx**2)/2+half_block
-        self.fyd = math.sqrt(half_block**2 * 3+self.fy**2)/2+half_block
+        self.fxd = math.sqrt((half_block*2)**2 * 3+self.fx**2)/2+half_block
+        self.fyd = math.sqrt((half_block*2)**2 * 3+self.fy**2)/2+half_block
 
 
 
