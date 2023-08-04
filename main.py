@@ -45,7 +45,7 @@ while playing:
         faces_displayed += len(k.faces)
         
         for i in k.faces:
-            j = i[0]
+            j = i
             points = [(vspoints[j[0]]), (vspoints[j[1]]), (vspoints[j[2]]), (vspoints[j[3]])]
             points2 = [(ps[j[0]]), (ps[j[1]]), (ps[j[2]]), (ps[j[3]])]
             if False in points2:
