@@ -48,12 +48,12 @@ while playing:
             j = i[0]
             points = [(vspoints[j[0]]), (vspoints[j[1]]), (vspoints[j[2]]), (vspoints[j[3]])]
             points2 = [(ps[j[0]]), (ps[j[1]]), (ps[j[2]]), (ps[j[3]])]
-            if ("ez", "ez") in points2:
+            if False in points2:
                 lst = []
                 for x in range(len(points)):
-                    if points2[x] != ("ez", "ez"):
+                    if points2[x] != False:
                         lst.append(points2[x])
-                    if (points2[(x+1)%len(points2)] == ("ez", "ez") and points2[x] != ("ez", "ez")) or (points2[(x+1)%len(points2)] != ("ez", "ez") and points2[x] == ("ez", "ez")):
+                    if (points2[(x+1)%len(points2)] == False and points2[x] != False) or (points2[(x+1)%len(points2)] != False and points2[x] == False):
                         lst.append(clip3D(points[(x+1)%len(points2)], points[x]))
                 if len(lst)>=3:
                     pygame.draw.polygon(screen, k.color, lst)
