@@ -40,7 +40,7 @@ class Game:
     def make_map_out_of_list(self, list_of_voxels: list[list]):
         for z in range(len(list_of_voxels)):
             for x in range(len(list_of_voxels[z])):
-                            self.all_blocks.append(cube.Block((x * block_size, 0, z * block_size), self.player.pos, self.map, (z, x)))
+                            self.all_blocks.append(cube.Block((x * block_size, 0, z * block_size), self.player.pos, self.map, (z, x), view_matrix, self.player.camX, self.player.camY))
 
     def update_cube_list(self):
         for block in self.all_blocks:
