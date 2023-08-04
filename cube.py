@@ -5,7 +5,7 @@ import math
 
 
 class Block:
-    def __init__(self, coord, player_coords, map_, matrix_coords):
+    def __init__(self, coord, player_coords, map_, matrix_coords, vm, camX, camY):
         self.points = ((coord[0] + half_block, coord[1] + half_block, coord[2] - half_block),
                 (coord[0] + half_block, coord[1] - half_block, coord[2] - half_block),
                 (coord[0] - half_block, coord[1] - half_block, coord[2] - half_block),
@@ -21,6 +21,9 @@ class Block:
         self.matrix_coords = matrix_coords
         self.player_distance = math.dist(self.coord, player_coords)
         self.sphere_size = math.sqrt(half_block**2 *3)
+        self.vm = vm
+        self.camX = camX
+        self.camY = camY
         self.update_render(player_coords, map_)
 
     def __lt__(self, other):
