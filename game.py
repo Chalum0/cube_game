@@ -52,6 +52,7 @@ class Game:
         self.displayed_blocks = []
         for block in self.all_blocks:
             boolean = block.update_distance(self.player.pos)
-            self.displayed_blocks.append(block)
+            if boolean:
+                self.displayed_blocks.append(block)
         self.displayed_blocks = sorted(self.displayed_blocks)
         self.displayed_blocks.reverse()
