@@ -11,8 +11,6 @@ class Game:
         self.all_blocks = []
         self.map = [[1 for i in range(20)] for k in range(20)]
         self.map[0][1] = 0
-        self.sphere_size = math.sqrt(((block_size/2)**2) * 3)
-        print(numpy.array(self.map))
 
         self.make_map_out_of_list(self.map)
     def display_rect(self, points: tuple, view_matrix: tuple, screen_x: int, screen_y: int, screen: pygame.surface.Surface):
