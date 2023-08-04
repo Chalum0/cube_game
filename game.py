@@ -49,7 +49,11 @@ class Game:
                 self.all_blocks.append(cube.Block((x * block_size, 0, z * block_size), self.player.pos, self.map, (z, x), self.vm, self.screen, self.player.fov))
 
     def update_cube_list(self):
+        self.displayed_blocks = []
         for block in self.all_blocks:
             block.update_distance(self.player.pos)
+            self.displayed_blocks.append(block)
         self.all_blocks = sorted(self.all_blocks)
         self.all_blocks.reverse()
+        self.displayed_blocks = sorted(self.displayed_blocks)
+        self.displayed_blocks.reverse()
