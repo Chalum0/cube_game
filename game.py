@@ -51,7 +51,7 @@ class Game:
     def update_cube_list(self):
         self.displayed_blocks = []
         for block in self.all_blocks:
-            block.update_distance(self.player.pos)
+            bool = block.update_distance(self.player.pos)
             self.displayed_blocks.append(block)
         self.displayed_blocks = sorted(self.displayed_blocks)
         self.displayed_blocks.reverse()
