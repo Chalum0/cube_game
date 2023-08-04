@@ -19,9 +19,9 @@ class Block:
         self.faces = []
         self.type = map_[matrix_coords[0]][matrix_coords[1]]
         self.matrix_coords = matrix_coords
-        self.update_render(player_coords, map_)
         self.player_distance = math.dist(self.coord, player_coords)
         self.sphere_size = math.sqrt(half_block**2 *3)
+        self.update_render(player_coords, map_)
 
     def __lt__(self, other):
         return self.player_distance < other.player_distance
