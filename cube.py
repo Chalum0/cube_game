@@ -17,6 +17,7 @@ class Block:
         self.coord = coord
         self.color = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
         self.faces = []
+        self.type = map_[matrix_coords[0]][matrix_coords[1]]
         self.matrix_coords = matrix_coords
         self.update_render(player_coords, map_)
         self.player_distance = math.dist(self.coord, player_coords)
