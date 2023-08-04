@@ -14,7 +14,6 @@ class Game:
         print(numpy.array(self.map))
 
         self.make_map_out_of_list(self.map)
-        # self.all_blocks.append(cube.Block((20, 0, 45), self.player.pos))
     def display_rect(self, points: tuple, view_matrix: tuple, screen_x: int, screen_y: int, screen: pygame.surface.Surface):
         ps = []
         vspoints = []

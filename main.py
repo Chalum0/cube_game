@@ -64,7 +64,7 @@ while playing:
                 for x in range(len(points)):
                     if points2[x] != ("ez", "ez"):
                         lst.append(points2[x])
-                    if (points2[(x+1)%len(points2)] == ("ez", "ez") and points2[x] != ("ez", "ez")) or (points2[(x+1)%4] != ("ez", "ez") and points2[x] == ("ez", "ez")):
+                    if (points2[(x+1)%len(points2)] == ("ez", "ez") and points2[x] != ("ez", "ez")) or (points2[(x+1)%len(points2)] != ("ez", "ez") and points2[x] == ("ez", "ez")):
                         lst.append(clip3D(points[(x+1)%len(points2)], points[x]))
 
                 if len(lst) >= 3:
