@@ -8,5 +8,7 @@ colors = [(255, 0, 0), (0, 255, 0), (0, 0, 255), (255, 0, 255), (255, 255, 0), (
 
 face = {}
 
+zcd = 1
+
 for i in range(7):
     face[i] = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))

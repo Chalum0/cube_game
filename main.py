@@ -43,7 +43,6 @@ while playing:
 
 
         for i in points_to_display:
-            zcd = 1
             if vspoints[i[0]][2]>=zcd and vspoints[i[1]][2]>=zcd:
                 pygame.draw.line(screen, (255, 255, 0), (ps[i[0]][0], ps[i[0]][1]), (ps[i[1]][0], ps[i[1]][1]))
             elif not (vspoints[i[0]][2]<=zcd and vspoints[i[1]][2]<=zcd):
@@ -54,9 +53,24 @@ while playing:
                     pygame.draw.line(screen, (255, 255, 0), (ps[i[0]][0], ps[i[0]][1]), (clipped[0], clipped[1]))
         k.update_render(game.player.pos)
         faces_displayed += len(k.faces)
+
+
         for i in k.faces:
-            pygame.draw.polygon(screen, colors[0], [(ps[i[0]][0], ps[i[0]][1]), (ps[i[1]][0], ps[i[1]][1]), (ps[i[2]][0], ps[i[2]][1]), (ps[i[3]][0], ps[i[3]][1])])
-    
+            points = [(vspoints[i[0]][0], vspoints[i[0]][1], vspoints[i[0]][2]), (vspoints[i[1]][0], vspoints[i[1]][1], vspoints[i[1]][2]), (vspoints[i[2]][0], vspoints[i[2]][1], vspoints[i[2]][2]), (vspoints[i[3]][0], vspoints[i[3]][1], vspoints[i[3]][2])]
+            points2 = [(ps[i[0]][0], ps[i[0]][1]), (ps[i[1]][0], ps[i[1]][1]), (ps[i[2]][0], ps[i[2]][1]), (ps[i[3]][0], ps[i[3]][1])]
+            if ("ez", "ez") in points2:
+                lst = []
+                for x in range(len(points) - 1):
+                    if points2[x] != ("ez", "ez"):
+                        lst.append(points2[x])
+                        if points2[x+1] == ("ez", "ez"):
+                            lst.append(clip3D(points[x], points[x+1]))
+
+                if len(lst) >= 3:
+                    pygame.draw.polygon(screen, colors[0], lst)
+            else:
+                pygame.draw.polygon(screen, colors[0], points2)
+
 
 
     keys = pygame.key.get_pressed()
