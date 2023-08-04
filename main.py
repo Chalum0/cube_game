@@ -38,6 +38,7 @@ while playing:
 
     view_matrix = game.view_matrix()
     faces_displayed = 0
+    game.update_cube_list()
     for k in game.all_blocks:
         ps, vspoints = game.display_rect(k.points, view_matrix, screen_x, screen_y, screen)
 

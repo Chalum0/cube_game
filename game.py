@@ -46,3 +46,9 @@ class Game:
                 else:
                     print("a")
         print(len(self.all_blocks))
+
+    def update_cube_list(self):
+        for block in self.all_blocks:
+            block.update_distance(self.player.pos)
+        self.all_blocks = sorted(self.all_blocks)
+        self.all_blocks.reverse()
