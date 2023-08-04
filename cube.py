@@ -66,4 +66,3 @@ class Block:
                 self.faces.append(((1, 2, 6, 5), math.dist((self.coord[0], self.coord[1] - half_block, self.coord[2]), player_pos)))  # top
             if player_pos[1] > self.coord[1]+half_block:
                 self.faces.append(((7, 4, 0, 3), math.dist((self.coord[0], self.coord[1] + half_block, self.coord[2]), player_pos)))  # bottom
-            self.faces.sort(key=lambda tup: tup[1])
